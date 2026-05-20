@@ -1,0 +1,29 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+<h2>Create Post</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    
+    <label>Title:</label>
+    <input type="text" name="title" required>
+    <br><br>
+    
+    <label>Content:</label>
+    <textarea name="content" required></textarea>
+    <br><br>
+    
+    <label>Category:</label>
+    <select name="category" required>
+        <option value="tech">Technology</option>
+        <option value="edu">Education</option>
+        <option value="life">Lifestyle</option>
+        <option value="other">Other</option>
+    </select>
+    <br><br>
+    
+    <button type="submit">Save</button>
+    <a href="{% url 'posts_list' %}">Cancel</a>
+</form>
+{% endblock %}

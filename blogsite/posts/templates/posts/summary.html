@@ -1,0 +1,15 @@
+{% extends 'posts/base.html' %} {% block content %}
+
+<h1>Summary of the Post: {{post.title}}</h1>
+<br />
+
+<h3>Category: {{post.get_category_display}}</h3>
+<h3>Date: {{post.date}}</h3>
+
+<h3>Ai-generated summary:</h3>
+<p>{{summary}}</p>
+
+<a href="{% url 'posts_detail' post.id %}">Post detail</a>
+<a href="{% url 'posts_list' %}">Back</a>
+
+{% endblock %}

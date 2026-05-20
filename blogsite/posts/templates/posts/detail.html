@@ -1,0 +1,19 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+<h2>Detail</h2>
+
+<h3>{{ post.title }}</h3>
+<p>Author: {{ post.author.username }}</p>
+<p>Category: {{ post.get_category_display }}</p>
+<p>Date: {{ post.date }}</p>
+
+<p>{{ post.content }}</p>
+
+<a href="{% url 'posts_list' %}">Back to Posts</a>
+{% if user == post.author %}
+    <a href="{% url 'posts_update' post.pk %}">Edit</a>
+    <a href="{% url 'posts_delete' post.pk %}">Delete</a>
+    <a href="{% url 'posts_summary' post.pk%}">Summary</a>
+{% endif %}
+{% endblock %}
